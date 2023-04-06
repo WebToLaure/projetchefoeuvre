@@ -4,9 +4,7 @@ import '././sidebar.css';
 export default function SideBar(props:any) {
 
     return (
-
-
-        <div className="sidebar">
+        <div className ="sidebar">
             <div className="sidebarItem">
                 <span className='sidebarTitle'>ABOUT ME</span>
 

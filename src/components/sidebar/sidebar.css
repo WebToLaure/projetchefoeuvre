@@ -1,12 +1,5 @@
-.sidebar {
-    flex: 3;
-    margin: 20px;
-    padding-bottom: 30px;
-    background-color: #fdfbfb;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.sidebar{
+    flex:3;
 }
 
 .sidebarItem {
