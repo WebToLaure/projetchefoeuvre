@@ -1,7 +1,7 @@
 import "././settings.css";
 import SideBar from "../../components/sidebar/sidebar";
 
-export default function Settings(props:any) {
+export default function Settings(props: any) {
     return (
 
         <div className="settings">
@@ -22,11 +22,11 @@ export default function Settings(props:any) {
                         </label>
                         <input type="file" id='fileInput' style={{ display: 'none' }} />
                     </div>
-                    <label>Username</label>
+                    <label>Pseudo</label>
                     <input type="text" placeholder="Inconnu" />
 
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" name="email" id="email" /* className="form-control registerInput"  */readOnly value="johnDoe@gmail.com"/>
+                    <input type="email" name="email" id="email" /* className="form-control registerInput"  */ readOnly value="johnDoe@gmail.com" />
 
                     <label>Password</label>
                     <input type="password" placeholder="Inconnu" />
@@ -38,8 +38,6 @@ export default function Settings(props:any) {
                 </form>
             </div>
             <SideBar />
-
-
         </div>
     )
 }
