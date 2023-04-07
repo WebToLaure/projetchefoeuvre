@@ -1,8 +1,14 @@
 
+import { NavLink } from "react-router-dom";
 import "./register.css";
 
 
-export default function Register(props:any) {
+export default function Register(props: any) {
+
+
+
+
+    
     return (
 
         <div className="register">
@@ -16,7 +22,7 @@ export default function Register(props:any) {
                     <option value="Other">...</option>
                 </select>
 
-                <label htmlFor="username" className="form-label">Username</label>
+                <label htmlFor="username" className="form-label">Pseudo</label>
                 <input type="text" name="username" id="username" className="form-control registerInput" placeholder="Enter your username.." />
 
                 <label htmlFor="email" className="form-label">Email address</label>
@@ -26,9 +32,9 @@ export default function Register(props:any) {
                 <input type="password" name="password" id="password" className="form-control registerInput" placeholder="Enter your password.." />
 
 
-                <button className="registerButton">Register</button>
+                <NavLink to="/"><button className="registerButton">Register</button></NavLink>
             </form>
-            <button className="registerLoginButton">LogIn</button>
+            <NavLink to="/users/login"><button className="registerLoginButton">LogIn</button></NavLink>
 
         </div>
     )

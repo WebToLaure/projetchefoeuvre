@@ -1,8 +1,13 @@
 
+import { NavLink } from "react-router-dom";
 import "././login.css";
 
 
 export default function Login(props: any) {
+
+
+
+
     return (
 
         <div className="login">
@@ -13,10 +18,10 @@ export default function Login(props: any) {
 
                 <label >Password</label>
                 <input type="password" className="loginInput" placeholder="Enter your password.." />
-                <button className="loginButton">LogIn</button>
+                <NavLink to="/">  <button className="loginButton">LogIn</button></NavLink>
             </form>
 
-            <button className="loginRegisterButton">Register</button>
+           <NavLink to="/users/register"><button className="loginRegisterButton">Register </button></NavLink>
 
         </div>
     )
