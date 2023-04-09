@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -13,37 +13,33 @@ import Topics from './pages/topics/topics';
 import Topic from './pages/topic/topic';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 import ContinentsCards from './pages/ContinentsCards/continentsCards';
+import { AuthContext, Tuser } from './context/authContext';
 
 
 function App() {
-
+  
+  const [user, setUser] = useState<Tuser | null>(null);
+  
 
   return (
-    <div className='container-fluid px-0'>
+    <AuthContext.Provider value={{
+      user: user,
+      setUser: setUser
+    }}>
+    <div className='.container-sm px-2'>
       <NavBar />
       <Routes>
-        <Route path='/' element={<HomePage />}/>{/* App sera le parent des routes posts et on trouvera la navbar fixe*/}
-          {/* <Route index element={<NavBar />} /> */}
-         {/*  <Route path='/' element={<ContinentsCards />} /> */}
-        {/* </Route> */}
-        <Route path="write" element={<Write />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/users/login" element={<Login />} />
-        <Route path="/users/register" element={<Register />} />
-
-
-        <Route path="/topics" element={<Topics />} /> {/*  permettra de consulter l'ensemble des posts */}
-        {/* <Route path="/topics/:id" element={<Topic />} />  */} {/* permmettra de consulter un post par son id  avec boutons éditer et supprimer*/}
-        <Route path="topics/delete/:id" element={<Topic />} /> {/* permettra de supprimer un post  */}
-        <Route path="*" element={<PageNotFound />} />
-
+          <Route path='/' element={<HomePage />} />{/* App sera le parent des routes posts et on trouvera la navbar fixe*/}
+          <Route path="write" element={<Write />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/users/register" element={<Register />} />
+          <Route path="/topics" element={<Topics />} /> {/*  permettra de consulter l'ensemble des posts */}
+          <Route path="topics/delete/:id" element={<Topic />} /> {/* permettra de supprimer un post  */}
+          <Route path="*" element={<PageNotFound />} />
       </Routes>
-
-
-
     </div>
-
-
+    </AuthContext.Provider>
   );
 }
 
