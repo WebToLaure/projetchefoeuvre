@@ -1,23 +1,11 @@
-
-.headerTitles{
-    font-family: "Lora",serif;
-    color:#444;
-
-}
-.headerTitleSm{
-    position: absolute;
-    font-size: 20px;
-}
-.headerTitleLg{
-    text-align:center;
-    position: absolute;
-    font-size: 80px;
+.headerTitle {
+    font-family: "Lora", serif;
+    color: #4f4d4d;
+    font-size:80px;
 }
 
 
-.headerImage {
-    object-fit:cover;
-    text-align:center;
-    margin-top: 112px;
-  /*   height:250px;  */
+.carousel-inner {
+    margin-top:8%;
+    height: 32em;
 }

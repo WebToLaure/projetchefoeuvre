@@ -5,15 +5,34 @@ import './header.css';
 export default function Header(props: any) {
 
   return (
-    <div className='container-fluid vh-50'>
-      
-        <div className='headerTitles d-flex flex-column align-items-center text-dark mt-4'>
-          <span className="headerTitleSm ps-2 pe-2 pt-2 text-center"> Projet Chef D'Oeuvre</span>
-          <span className="headerTitleLg ps-2 pe-2 pt-5 text-center"> Au delà d'un continent</span>
-       
-        <img className="img-fluid headerImage vh-25 vw-100 px-1" src="/photos/headerPhoto2.jpg" alt="" />
+    <>
+      <div className='headerTitle text-center mt-4 pt-3 d-flex align-items-md-baseline justify-content-center'>
+        <span className='title fw-light pt-2'>Au Delà D'un Continent</span>
       </div>
-    </div>
+
+      <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src="/photos/Japon.jpg" className="img-fluid d-block w-100 " alt="photo Japon"></img>
+          </div>
+          <div className="carousel-item">
+            <img src="/photos/chugach-national-forest.jpg" className="img-fluid d-block w-100" alt="photo du chugach-national-forest"></img>
+          </div>
+          <div className="carousel-item">
+            <img src="/photos/Iguane.jpg" className="img-fluid d-block w-100" alt="photo Iguane"></img>
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+    </>
+
   )
 
 }
