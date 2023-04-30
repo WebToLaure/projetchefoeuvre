@@ -4,7 +4,7 @@ export function PageNotFound(props: any) {
 
     return (
 
-        <div>Cette page est introuvable</div>
+        <div>La page que vous avez demandée est introuvable</div>
 
     )
 }
