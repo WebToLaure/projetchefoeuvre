@@ -1,12 +1,6 @@
-
 .register{
-    
-    height:90vh;
-    display:flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-    background: url("/public/photos/Vietnam.jpg");
+    height:95vh;
+    background: url("/public/photos/REGISTER2.jpg");
     background-size: cover;
 }
 
@@ -18,40 +12,31 @@
 
 .registerForm{
     margin-top: 10px;
-    display: flex;
-    flex-direction: column;
     color:white;
 }
 .registerForm > label{
     margin:10px 0;
 }
+
 .registerInput{
-    width: 30vw;
-    padding:10px;
-    background-color: white;
-    border:none;
-  
+    width: 40vw;
 }
 
 .registerButton{
     margin-top: 20px;
-    width:100px;
-    padding:10px;
+    padding:4px;
     background-color:teal;
-    justify-content: center;
-    align-items: center;
+    border-radius:5px;
     border:none;
     color:white;
    
 }
-.registerLoginButton{
-    position:absolute;
-    top:70px;
-    right: 20px;
-    padding:10px;
+.LoginBtn{
+    font-family: "Lora";
+    margin-top: 20px;
+    padding:4px;
     background-color:lightcoral;
+    border-radius:5px;
     color:white;
-    cursor: pointer;
-
 
 }
