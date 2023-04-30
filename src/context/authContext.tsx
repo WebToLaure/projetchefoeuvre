@@ -10,7 +10,7 @@ export type Tuser = {
         createdAt:Date,
         updatedAt:Date,
         role: string,
-        topics: { id: number, continent: string, title: string, destinations: string, content: string, createdAt: Date, updatedAt: Date, deletedAt: Date }[],
+        topics: { id: number, title: string, destinations: string, content: string, createdAt: Date, updatedAt: Date, deletedAt: Date }[],
         commentaries: { id: number, content: string, createdAt: Date, updatedAt: Date, deletedAt: Date }[],
     },
     access_token: string
@@ -22,7 +22,7 @@ export interface IAuthContext {
     setUser: (user:Tuser|null) => void;
 }
 
-// Pour créer du contexte, vous devez importer createContext et l’initialiser :
+// Pour créer un contexte, vous devez importer createContext et l’initialiser :
 export const AuthContext = createContext<IAuthContext>({
     user: null,
     setUser: () => { },
