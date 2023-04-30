@@ -1,60 +1,73 @@
-.sidebar{
-    flex:3;
+.container-sidebar{
+    position:sticky;
+    top:40%;
 }
 
-.sidebarItem {
-    display: flex;
-    flex-direction: column;
+.profile-area {
+    justify-content: center;
     align-items: center;
+    position:sticky;
+    padding: 15px 0;
 }
 
-.sidebarTitle {
-    margin: 10px;
-    padding: 5px;
-    width: 80%;
-    border-top: 1px solid #a7a4a4;
-    border-bottom: 1px solid #a7a4a4;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 12px;
-    color: #222;
-    font-weight: 600;
-    line-height: 20px;
+.card {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+   /*  border-radius: 15px; */
+}
+
+.img1 img {
+    height: 200px;
+    width:100%;
+}
+.img2 img{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    width: 155px;
+    height:155px;
+    border-radius: 50%;
+    border:7px solid #fff;
+    margin-top: -80px;
+}
+
+.card:hover .img2 img{
+    border-color: darkcyan;
+    transition:.7s;
+}
+.main-text{
+    padding:30px 0;
     text-align: center;
 }
 
-.maPhoto{
-    margin-top: 15px;
-    padding: 30px;
-    width:350px;
-    height:400px;
-}
-.aPropos{
-    padding : 30px;
+.main-text h2{
+    text-transform:uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0 0 20px;
 }
 
-.sideBarList{
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.sideBarListItem {
-    display: inline-block;
-    width: 50%;
-    margin-top: 15px;
-    cursor: pointer;
-}
-
-.sideBarSocial{
-    margin-top: 15px;
-    width: 250px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon{
+.main-text p{
     font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
+    padding:0 35px;
+}
+.socials{
+    text-align: center;
+    padding-bottom: 20px;
 }
 
+.socials icon{
+    font-size: 20px;
+    font-size: darkcyan;
+    padding:0 10px;
+}
+
+.List{
+    width:50%;
+    list-style : none;
+    cursor:pointer;
+    color:black;
+    
+}
