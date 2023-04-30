@@ -1,11 +1,12 @@
 .headerTitle {
-    font-family: "Lora", serif;
-    color: #4f4d4d;
-    font-size:80px;
+    font-family: "Lora", "sans serif";
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 5vw;
+    text-shadow: 1px 1px 2px white;
 }
 
 
 .carousel-inner {
-    margin-top:8%;
+    margin-top: 8%;
     height: 32em;
 }

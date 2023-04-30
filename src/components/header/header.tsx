@@ -6,17 +6,19 @@ export default function Header(props: any) {
 
   return (
     <>
-      <div className='headerTitle text-center mt-4 pt-3 d-flex align-items-md-baseline justify-content-center'>
-        <span className='title fw-light pt-2'>Au Delà D'un Continent</span>
+      <div className="container">
+        <div className="row headerTitle text-center mt-4">    
+            <p className='col-md-12 fw-light pt-2'>Au delà d'un Continent</p>   
+        </div>
       </div>
 
-      <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleAutoplaying" className="carousel slide carousel-fade" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src="/photos/Japon.jpg" className="img-fluid d-block w-100 " alt="photo Japon"></img>
           </div>
           <div className="carousel-item">
-            <img src="/photos/chugach-national-forest.jpg" className="img-fluid d-block w-100" alt="photo du chugach-national-forest"></img>
+            <img src="/photos/Alpes.jpg" className="img-fluid d-block w-100" alt="photo du chugach-national-forest"></img>
           </div>
           <div className="carousel-item">
             <img src="/photos/Iguane.jpg" className="img-fluid d-block w-100" alt="photo Iguane"></img>
