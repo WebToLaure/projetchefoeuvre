@@ -1,0 +1,17 @@
+.textarea{
+    width: 900px;
+    height:250px;
+}
+.Contact{
+    background-color: rgb(70, 88, 98);
+}
+.Title{
+    font-family: "Lora";
+}
+.contact{
+    font-family: "Josefin";
+}
+.SeparateLine{
+    margin-left: 10.5rem;
+    margin-right: 10.5rem;
+}
