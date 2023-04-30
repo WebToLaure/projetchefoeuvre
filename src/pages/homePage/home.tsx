@@ -1,25 +1,27 @@
 import react from 'react';
 import Header from '../../components/header/header';
 import SideBar from '../../components/sidebar/sidebar';
-
 import "././home.css";
-import ContinentsCards from '../ContinentsCards/continentsCards';
+import ContinentsCards from '../../components/ContinentsCards/continentsCards';
 
 
 export default function HomePage(props: any, onClick: react.MouseEventHandler<HTMLDivElement> | undefined) {
 
   return (
-    <div >
+    <>
       <Header />
-      <div className='home mt-3'>
-        <div className='container vw-100 vh-100'>
-          <ContinentsCards />
+      <div className="container-fluid">
+        <div className="row m-2">
+          <div className="col-md-9 container-card">
+            <ContinentsCards/>
+          </div>
+          <div className="col-md-3 container-card mt-3">
+            <SideBar />
+          </div>
         </div>
-        <div className='sidebar'>
-          <SideBar />
-        </div>
+
       </div>
-    </div>
+    </>
   );
 
 }
