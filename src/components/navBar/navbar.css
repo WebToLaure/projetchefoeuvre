@@ -1,32 +1,20 @@
-.container {
-    max-width: 90%;
-    height: 50px;
-    /*  background-color: #fdfbfb; */
-    top: 0;
-    display: flex;
-    align-items: center;
-    font-family: "Josefin Sans", "sans-serif";
-    z-index: 999;
+.ps-4{
+    padding-left: 1rem ! important;
 }
 
-.navBar_left,
-.navBar_right {
-    display: flex;
-    flex: 3;
-    align-items: center;
-    justify-content: center;
+
+
+.navbar{
+font-family: "Lora","Josefin Sans"," sans-serif";
+
 }
 
-.navBar_center {
-    flex: 6
+.navbar-brand{
+    margin:0;
+    font-size: 5vw;
+
 }
 
-.bi {
-    font-size: 20px;
-    margin-right: 10px;
-    color: #444;
-    cursor: pointer;
-}
 
 .profilImage {
     width: 40px;
@@ -36,17 +24,21 @@
     cursor: pointer;
 }
 
-.navbar-nav {
+/*.navbar-nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: "Josefin Sans, sans-serif";
-}
+    font-family: ;
+}*/
 
 .nav-item {
+    display:flex;
+    flex:6;
+    justify-content: space-evenly;
+    align-items: center;
     margin-right: 20px;
     font-weight: 300;
     font-size: 18px;
@@ -61,7 +53,7 @@
     cursor: pointer;
 }
 
-.navBarLogin,
+/*.navBarLogin,
 .navBarRegister {
     margin-left: 20px;
     margin-right: 20px;
@@ -72,4 +64,4 @@
 link-active{
 
     color:yellow;
-}
+}  */
