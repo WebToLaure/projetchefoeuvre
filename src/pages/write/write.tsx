@@ -187,7 +187,7 @@ export default function Write(props: any) {
                     <label className="TopicTitle fs-2 text-center m-3"></label>
                     <input type='text' className="form-control" value={destinationsInput} placeholder="Pays visités" onChange={(event) => setDestinationsInput(event.target.value)} aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 
-
+                    
 
                     <div className="input-group mb-2 mt-5 justify-content-center">
                         <label htmlFor="upload-file" className="upload-file">Téléchargez vos photos (min.4 max. 8) </label>
