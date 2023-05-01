@@ -16,7 +16,7 @@ export default function Login(props: any) {
     const auth = useContext(AuthContext)
 
     const navigate = useNavigate();
-    async function fetchDataLog() {
+    async function fetchDataLog(event: { preventDefault: () => void; }) {
 
         const requestOptions = {
             method: 'POST',
@@ -36,7 +36,7 @@ export default function Login(props: any) {
         if (responseJson.access_token) {
             auth.setUser({ ...responseJson });
             resetInputLog()
-            navigate("/");
+            setTimeout(() => navigate("/"), 1500);
         }
 
         else {
