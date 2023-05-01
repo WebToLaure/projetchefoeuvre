@@ -44,9 +44,7 @@ export default function Register(props: any) {
      * * Création du body register afin de les lier avec les input dans le return
      * * Faire appel aux requêtes back-end pour la relation Front/Back
      */
-    async function Register(event: { preventDefault: () => void; }) {
-
-        event.preventDefault()
+    async function Register() {
 
         // Options de requêtes et envoi des données des input en BDD
         const requestOptions = {
@@ -73,7 +71,7 @@ export default function Register(props: any) {
             console.log("test");
             navigate("/auth/login")
             resetInput()
-            alert("Compte créé avec succès,vous pouvez vous connecter à présent")
+            alert("Compte créé avec succès,à présent vous pouvez vous connecter ")
         } else if (responseJson === 400) {
             alert("Votre civilité n'a pas été renseignée");
         } else if (responseJson.statusCode === 404) {
@@ -104,51 +102,55 @@ export default function Register(props: any) {
         <div className="container-fluid">
             <div className="row justify-content-center register mx-2 ">
                 <div className="col-xl-4 col-md-8">
-                    <div className=" form-log rounded-5 shadow-5-strong p-3 ">
-                        <div className="col text-center text-white align-items-center  mb-3 mt-2">
-                            <h4 className="titleRegister m-0">Register</h4>
-                        </div>
-
-                        <label htmlFor="gender" className="form-label text-white m-0">Gender</label>
-                        <div className="form-outline mt-2">
-                            <select name="gender" id="gender" className="form-select-sm registerInput col-6" value={genderInput} onChange={(event) => setGenderInput(event.target.value)}>
-                                <option value="Miss"></option>
-                                <option value="Miss">Miss</option>
-                                <option value="Mr">Mr</option>
-                                <option value="Other">...</option>
-                            </select>
-                        </div>
-
-                        <label htmlFor="pseudo" className="form-label text-white m-0">Pseudo</label>
-                        <div className="form-outline mb-3 mt-2">
-                            <input type="text" id="pseudo" className="form-control registerInput" placeholder="Enter your pseudo.." value={pseudoInput} onChange={(event) => setPseudoInput(event.target.value)} />
-                        </div>
-                        <label htmlFor="email" className="form-label text-white m-0">Email address</label>
-                        <div className="form-outline mb-3 mt-2">
-                            <input type="email" id="email" className="form-control registerInput" placeholder="Enter your email.." value={emailInput} onChange={(event) => setEmailInput(event.target.value)} />
-                        </div>
-                        <label htmlFor="password" className="form-label text-white m-0">Password</label>
-                        <div className="form-outline mb-3 mt-2">
-                            <input type="password" className="form-control registerInput" id="password" placeholder="Enter your password.." value={passwordInput} onChange={(event) => setPasswordInput(event.target.value)} />
-                            <div id="passwordHelpBlock" className="form-text text-light text-bold">
-                                Your password must be 8-20 characters long, contain at least an upper case letter, a number, and must contain special characters..
+                    <form className="container-form" onSubmit={(e) => { e.preventDefault(); Register(); }}>
+                        <div className=" form-log rounded-5 shadow-5-strong p-3 ">
+                            <div className="col text-center text-white align-items-center  mb-3 mt-2">
+                                <h4 className="titleRegister m-0">Register</h4>
                             </div>
-                        </div>
-                        <label htmlFor="passwordConfirm" className="form-label text-white m-0">Password Confirm</label>
-                        <div className="form-outline mb-3 mt-2">
-                            <input type="password" className="form-control registerInput" id="passwordConfirm" placeholder="Confirm your password.." value={passwordConfirmInput} onChange={(event) => setPasswordConfirmInput(event.target.value)} />
-                            <div id="passwordHelpBlock" className="form-text text-light text-bold">
-                                Please confirm your password..
-                            </div>
-                        </div>
-                        <div className="col-center text-center align-items-center mt-3">
-                            <button type="button" className="btn-block registerButton col-4" onClick={Register}>Register</button>
-                        </div>
-                        <div className="col-center text-center justify-content-center align-items-center mt-2 mb-2">
-                            <NavLink to="/auth/login"><button className="LoginBtn btn-block rounded col-6 ">Se connecter</button></NavLink>
-                        </div>
 
-                    </div>
+                            <label htmlFor="gender" className="form-label text-white m-0">Gender</label>
+                            <div className="form-outline mt-2">
+                                <select name="gender" id="gender" className="form-select-sm registerInput col-6" value={genderInput} onChange={(event) => setGenderInput(event.target.value)}>
+                                    <option value="Miss"></option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Mr">Mr</option>
+                                    <option value="Other">...</option>
+                                </select>
+                            </div>
+
+                            <label htmlFor="pseudo" className="form-label text-white m-0 mt-3">Pseudo</label>
+                            <div className="form-outline mb-3 mt-2">
+                                <input type="text" id="pseudo" className="form-control registerInput" placeholder="Enter your pseudo.." value={pseudoInput} onChange={(event) => setPseudoInput(event.target.value)} />
+                            </div>
+                            <label htmlFor="email" className="form-label text-white m-0">Email address</label>
+                            <div className="form-outline mb-3 mt-2">
+                                <input type="email" id="email" className="form-control registerInput" placeholder="Enter your email.." value={emailInput} onChange={(event) => setEmailInput(event.target.value)} />
+                            </div>
+                            <label htmlFor="password" className="form-label text-white m-0">Password</label>
+                            <div className="form-outline mb-3 mt-2">
+                                <input type="password" className="form-control registerInput" id="password" placeholder="Enter your password.." value={passwordInput} onChange={(event) => setPasswordInput(event.target.value)} aria-labelledby="passwordHelpBlock" />
+                                <div id="passwordHelpBlock" className="form-text text-light text-bold">
+                                    Your password must be 8-20 characters long, contain at least an upper case letter, a number, and special characters..
+                                </div>
+                            </div>
+                            <label htmlFor="passwordConfirm" className="form-label text-white m-0">Password Confirm</label>
+                            <div className="form-outline mb-3 mt-2">
+                                <input type="password" className="form-control registerInput" id="passwordConfirm" placeholder="Confirm your password.." value={passwordConfirmInput} onChange={(event) => setPasswordConfirmInput(event.target.value)} />
+                                <div id="passwordHelpBlock" className="form-text text-light text-bold">
+                                    Please confirm your password..
+                                </div>
+                            </div>
+                            <div className="col-center text-center align-items-center mt-3">
+                                <button type="submit" className="btn-block registerButton col-4" /* onClick={Register} */>Valider</button>
+                            </div>
+                            <div className="col-center text-center justify-content-center align-items-center mt-4">
+                                <div id="passwordHelpBlock" className="form-text text-white text-bold">
+                                    Déjà un compte?</div>
+                                <NavLink to="/auth/login"><button className="LoginBtn btn-block rounded col-6 mt-1 m-0">Se connecter</button></NavLink>
+                            </div>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
