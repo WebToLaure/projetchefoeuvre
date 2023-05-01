@@ -15,7 +15,8 @@ export default function Settings(props: any) {
     const navigate = useNavigate();
 
 
-    async function patchUser() {
+    async function patchUser(/* event: { preventDefault: () => void; } */) {
+       /*  event.preventDefault() */
 
         const requestOptions = {
             method: 'PATCH',
@@ -87,7 +88,7 @@ export default function Settings(props: any) {
                             <input type="text" value={pseudoInput} placeholder="Inconnu" onChange={(event) => setPseudoInput(event.target.value)} />
 
                             <label htmlFor="email" className="form-label">Email address</label>
-                            <input type="email" name="email" id="email" readOnly value="johnDoe@gmail.com" autoFocus />
+                            <input type="email" name="email" id="email" readOnly value={user?.user.email} aria-label="Disabled input example" disabled autoFocus/>
 
                             <label>Password</label>
                             <input type="password" placeholder="Inconnu" />
