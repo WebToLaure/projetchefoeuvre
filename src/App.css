@@ -1,0 +1,31 @@
+
+.Toastify__toast {
+    border-radius:255px 25px 225px 25px/25px 225px 25px 255px;
+    text-decoration: none;
+    font-family: "Lora";
+    color:white;
+}
+
+.Toastify__toast--warning {
+    background-image: linear-gradient(#de963d, #d47500 50%, #c36c00);
+    filter: none;
+    border: 1px solid #aa5e00;
+}
+.Toastify__toast--success {
+    background-image: linear-gradient(#6bc756, #3cb521 50%, #37a71e);
+    filter: none;
+    border: 1px solid #30911a;
+}
+.Toastify__toast--info {
+    background-image: linear-gradient(#64b1f6, #3399f3 50%, #2f8de0);
+    filter: none;
+    border: 1px solid #297ac2;
+}
+
+.Toastify__toast--error {
+    background-image: linear-gradient(#d93f3d, #cd0200 50%, #bd0200);
+    filter: none;
+    color:white;
+    border: 1px solid #a40200;
+}
+
