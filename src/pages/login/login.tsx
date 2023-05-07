@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "././login.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { toast } from "react-toastify";
 
 
 type ProfilLog = {
@@ -9,6 +10,7 @@ type ProfilLog = {
     password: string;
 }
 export default function Login(props: any) {
+    const { user,setUser } = useContext(AuthContext);
 
     const [emailInput, setEmailLogInput] = useState("")
     const [passwordInput, setPasswordLogInput] = useState("")
@@ -35,15 +37,15 @@ export default function Login(props: any) {
 
         if (responseJson.access_token) {
             auth.setUser({ ...responseJson });
+            toast.success(`Bonjour et ravie de vous revoir!!`)
             resetInputLog()
-            setTimeout(() => navigate("/"), 1500);
+            setTimeout(() => navigate("/"), 5000);
         }
 
         else {
             resetInputLog()
             return (
-
-                alert("Email ou mot de passe incorrect")
+                toast.warning("Email ou mot de passe incorrect")
             )
 
         };
@@ -108,6 +110,3 @@ export default function Login(props: any) {
 
 
 
-{/*}  <NavLink to="/users/register"><button className="loginRegisterButton mt-3 me-3 rounded border border-info">Register </button></NavLink>
-                        <NavLink to="/"><button className="d-flex text-decoration-none loginButton text-center border border-warning rounded  m-auto  mt-3" onClick={fetchDataLog}>Se connecter</button></NavLink>
-</div>*/}
