@@ -1,19 +1,8 @@
-
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./register.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
-
-
-
-type ProfilRegister = {
-    gender: string;
-    pseudo: string,
-    email: string,
-    password: string,
-    password_confirm: string,
-
-}
 
 
 /**
@@ -68,20 +57,19 @@ export default function Register(props: any) {
         //après validation de la requête, annuler toutes les saisies des inputs
 
         if (responseJson.statusCode === 201) {
-            console.log("test");
-            navigate("/auth/login")
+           toast.success("Compte créé avec Succès!! Vous allez être redirigé vers la page de connexion!!!")
+           setTimeout(() => navigate("/auth/login"), 5000);
             resetInput()
-            alert("Compte créé avec succès,à présent vous pouvez vous connecter ")
-        } else if (responseJson === 400) {
-            alert("Votre civilité n'a pas été renseignée");
+        } else if(responseJson === 400) {
+          return  toast.warning("Merci de remplir tous les champs");
         } else if (responseJson.statusCode === 404) {
-            alert("Votre mot de passe ne correspond pas au critère de sécurité");
-        } else if (responseJson.statusCode === 409) {
-            alert("Saisie incorrecte du mot de passe de confirmation");
-        } else if (responseJson.message === "L'Email existe déjà") {
-            alert(responseJson.message);
+            return toast.warning("Votre mot de passe ne correspond pas au critère de sécurité");
+        } else if(responseJson.statusCode === 409) {
+            return toast.warning("Saisie incorrecte du mot de passe de confirmation");
+        } else if(responseJson.statusCode === 406) {
+            return toast.warning("Pseudo déjà existant, merci de bien vouloir modifier votre pseudo");
         } else {
-            return
+            return toast.error ("Une erreur s'est produite, merci de bien vouloir réitérer votre demande")
         }
 
 
@@ -102,46 +90,52 @@ export default function Register(props: any) {
         <div className="container-fluid">
             <div className="row justify-content-center register mx-2 ">
                 <div className="col-xl-4 col-md-8">
+                <p className="note text-white mt-1"> * Tous les champs sont obligatoires.</p>
                     <form className="container-form" onSubmit={(e) => { e.preventDefault(); Register(); }}>
                         <div className=" form-log rounded-5 shadow-5-strong p-3 ">
-                            <div className="col text-center text-white align-items-center  mb-3 mt-2">
+                            <div className="col text-center text-white align-items-center  mb-3 mt-">
                                 <h4 className="titleRegister m-0">Register</h4>
                             </div>
 
-                            <label htmlFor="gender" className="form-label text-white m-0">Gender</label>
+                            <label htmlFor="gender" className="form-label text-white m-0">Gender* </label>
                             <div className="form-outline mt-2">
                                 <select name="gender" id="gender" className="form-select-sm registerInput col-6" value={genderInput} onChange={(event) => setGenderInput(event.target.value)}>
-                                    <option value="Miss"></option>
+                                    <option key ="selectGender"value={0}></option>
                                     <option value="Miss">Miss</option>
                                     <option value="Mr">Mr</option>
                                     <option value="Other">...</option>
                                 </select>
                             </div>
 
-                            <label htmlFor="pseudo" className="form-label text-white m-0 mt-3">Pseudo</label>
+                            <label htmlFor="pseudo" className="form-label text-white m-0 mt-3">Pseudo*</label>
                             <div className="form-outline mb-3 mt-2">
                                 <input type="text" id="pseudo" className="form-control registerInput" placeholder="Enter your pseudo.." value={pseudoInput} onChange={(event) => setPseudoInput(event.target.value)} />
                             </div>
-                            <label htmlFor="email" className="form-label text-white m-0">Email address</label>
+
+                            <label htmlFor="email" className="form-label text-white m-0">Email address*</label>
                             <div className="form-outline mb-3 mt-2">
-                                <input type="email" id="email" className="form-control registerInput" placeholder="Enter your email.." value={emailInput} onChange={(event) => setEmailInput(event.target.value)} />
+                                <input type="email" id="email" className="form-control registerInput" /* pattern="(\w\.?)+@[\w\.-]+\.\w{2,}" */ placeholder="Enter your email.." value={emailInput} onChange={(event) => setEmailInput(event.target.value)} />
                             </div>
-                            <label htmlFor="password" className="form-label text-white m-0">Password</label>
+
+                            <label htmlFor="password" className="form-label text-white m-0">Password*</label>
                             <div className="form-outline mb-3 mt-2">
-                                <input type="password" className="form-control registerInput" id="password" placeholder="Enter your password.." value={passwordInput} onChange={(event) => setPasswordInput(event.target.value)} aria-labelledby="passwordHelpBlock" />
+                                <input type="password" className="form-control registerInput" id="password" placeholder="8-20 with special characters,upper case letter, number" value={passwordInput} onChange={(event) => setPasswordInput(event.target.value)} aria-labelledby="passwordHelpBlock" />
                                 <div id="passwordHelpBlock" className="form-text text-light text-bold">
-                                    Your password must be 8-20 characters long, contain at least an upper case letter, a number, and special characters..
+                                  {/*   Your password: 8-20 characters long, On upper case letter, number, special characters.. */}
                                 </div>
                             </div>
-                            <label htmlFor="passwordConfirm" className="form-label text-white m-0">Password Confirm</label>
+
+                            <label htmlFor="passwordConfirm" className="form-label text-white m-0">Password Confirm*</label>
                             <div className="form-outline mb-3 mt-2">
                                 <input type="password" className="form-control registerInput" id="passwordConfirm" placeholder="Confirm your password.." value={passwordConfirmInput} onChange={(event) => setPasswordConfirmInput(event.target.value)} />
                                 <div id="passwordHelpBlock" className="form-text text-light text-bold">
                                     Please confirm your password..
                                 </div>
                             </div>
+
                             <div className="col-center text-center align-items-center mt-3">
                                 <button type="submit" className="btn-block registerButton col-4" /* onClick={Register} */>Valider</button>
+                               
                             </div>
                             <div className="col-center text-center justify-content-center align-items-center mt-4">
                                 <div id="passwordHelpBlock" className="form-text text-white text-bold">

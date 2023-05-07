@@ -6,12 +6,12 @@
 
 .registerTitle{
     font-size: 40px;
-    padding-top:40px;
+    padding-top:30px;
    
 }
 
 .registerForm{
-    margin-top: 10px;
+    margin-top: 8px;
     color:white;
 }
 .registerForm > label{
@@ -39,4 +39,8 @@
     border-radius:5px;
     color:white;
 
+}
+label{
+    font-size: 15px;
+  
 }
