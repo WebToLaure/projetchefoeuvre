@@ -1,19 +1,21 @@
-import "./userTopics.css";
+import "./userTopic.css";
 import { AuthContext } from '../../context/authContext';
 import { useState, useContext } from 'react';
 import UserTopic from "./userTopic";
 
 
+type TTop = {
+        id: number,
+        continentId: string,
+        title: string,
+        destinations: string,
+        content: string,
+        createdAt: Date,
+        updatedAt: Date,
+        deletedAt: Date
+    }
 
-type TTopic = {
-    id: number,
-    title: string,
-    destinations: string,
-    content: string,
-    createdAt: Date,
-    updatedAt: Date,
-    deletedAt: Date,
-}
+
 export default function UserTopics() {
 
     const [titleInput, setTitleInput] = useState<string>("");
@@ -24,7 +26,7 @@ export default function UserTopics() {
     const { user } = useContext(AuthContext);
 
 
-    function patchTopic(item: TTopic) {
+    function patchTopic(item: TTop) {
         const index = user!.user.topics.findIndex(elm => elm.id === item.id);
         user!.user.topics[index] = item;
         setUser({ ...user! });
@@ -32,15 +34,12 @@ export default function UserTopics() {
 
     }
     function deleteTopic(id: number) {
-
-        const topic = user!.user.topics.filter(item => item.id !== id)
-        user!.user.topics = topic;
-
-
+        const newtopics = user!.user.topics.filter(item => item.id !== id)
+        user!.user.topics = newtopics;
         setUser({ ...user! });
 
     }
-    const listTopics = user?.user.topics.map(item => <UserTopic del={deleteTopic} patch={patchTopic} item={item} key={item.id} />)
+    const listTopics = user?.user?.topics?.map(item => <UserTopic del={deleteTopic} patch={patchTopic} topic={item} key={item.id} />)
 
 
 
