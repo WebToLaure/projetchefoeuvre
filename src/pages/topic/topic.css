@@ -7,7 +7,9 @@ width:300px;
 height:350px;
 
 }
- /* .editContainer {
+
+
+ .editContainer {
     float: right;
     font-size: 16px;
 } 
@@ -24,7 +26,9 @@ height:350px;
 .editTopicIcon:last-child {
     color: rgb(223, 27, 27);
 } 
- */
+ 
+
+
 .topicInfos {
     margin-bottom: 20px;
     justify-content: space-between;

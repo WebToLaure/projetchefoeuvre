@@ -1,0 +1,10 @@
+.retour {
+    border-radius: 5px;
+    font-family: "Josefin";
+    background-color: rgb(71, 68, 70);
+    border: none;
+}
+
+.retour:hover {
+    background-color: rgb(179, 173, 173);
+}
