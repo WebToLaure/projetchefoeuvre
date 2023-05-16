@@ -24,7 +24,7 @@ export default function ContinentsCards() {
             };
             const response = await fetch('http://localhost:8000/continents', requestOptions);
             const responseJson = await response.json();
-            console.log(responseJson);
+            console.log(responseJson, "continentsCards");
 
             setContinents(responseJson.data);
 

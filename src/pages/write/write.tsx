@@ -1,8 +1,8 @@
 import "././write.css";
 import { useState, useContext, useEffect, useRef, SyntheticEvent } from 'react';
-
 import { AuthContext } from '../../context/authContext';
-
+import { toast } from "react-toastify";
+import {useNavigate } from "react-router-dom";
 
 
 type TTopic = {
@@ -28,18 +28,15 @@ export default function Write(props: any) {
 
     const [titleInput, setTitleInput] = useState<string>("");
     const [destinationsInput, setDestinationsInput] = useState<string>("");
-    const [contentInput, setContentInput] = useState<string>("");
     const [fileInput, setFileInput] = useState<FileList>();
-
-    /*     const token = useContext(AuthContext).user?.access_token; */
-    const { setUser } = useContext(AuthContext);
-    const { user } = useContext(AuthContext);
-
+    const [contentInput, setContentInput] = useState<string>("");
+    
+    const { user, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
     const formRef = useRef(null);
 
     useEffect(() => {
         const getContinents = async () => {
-
             const requestOptions = {
                 method: 'GET',
                 headers: {
@@ -48,19 +45,14 @@ export default function Write(props: any) {
             };
             const response = await fetch('http://localhost:8000/continents', requestOptions);
             const responseJson = await response.json();
-            console.log(responseJson);
 
             setContinents(responseJson.data);
-
         };
-
         getContinents()
             .catch(console.error);
-
     }, [])
 
-    function findContinent(continentId: number) {
-
+    async function findContinent(continentId: number) {
         if (continents) {
             const selectedContinent = continents.find((item) => item.id === continentId);
             if (selectedContinent) {
@@ -68,14 +60,10 @@ export default function Write(props: any) {
                 setContinentInput(selectedContinents);
             }
         }
-    }
-    console.log(continentInput, "test");
-
+    } console.log(continentInput, "test");
 
     async function addTopic(e: SyntheticEvent) {
         e.preventDefault();
-
-
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -95,19 +83,19 @@ export default function Write(props: any) {
 
 
         if (responseJson?.data?.id) {
-
             addImageToTopic(responseJson.data.id, e);
         }
-
         user!.user.topics = [...user!.user.topics, responseJson.data]
-
-        setUser({ ...user! });
+        setUser({ ...user! });  
+        if (responseJson.statusCode === 201) {
+            toast.success("Topic publié avec Succès!! Vous allez être redirigé vers la page accueil!!!",{ autoClose: 1500 })
+            setTimeout(() => navigate("/"), 1500);
+        }
         resetInput();
     };
 
     async function addImageToTopic(topicId: number, e: SyntheticEvent) {
         const form = new FormData();
-
         if (!fileInput) {
             return;
         }
@@ -132,6 +120,7 @@ export default function Write(props: any) {
         console.log(responseJson);
 
     }
+
     function resetInput() { // remet l'input à zéro.
         setContinents([])
         setTitleInput("")
@@ -139,8 +128,6 @@ export default function Write(props: any) {
         setContentInput("")
         document.getElementById('close-btn')?.click()
     }
-
-
 
     const onChangeImage = (event: React.FormEvent) => {
         console.log(event, (event.target as HTMLInputElement).files);
@@ -160,9 +147,6 @@ export default function Write(props: any) {
 
     }
 
-
-
-
     const listContinents = continents?.map(elm => <option value={elm.id} key={elm.continent}>{elm.continent}</option>)
     console.log(listContinents);
 
@@ -173,7 +157,7 @@ export default function Write(props: any) {
 
                 <form method='post' encType='multipart/form-data' ref={formRef} className="was-validated" onSubmit={addTopic}>
                     <div className="form-group">
-                        <select className="custom-select custom-select-sm mt-5 ms-5 mb-4 me-1 rounded" required value={continentInput} onChange={(event) => findContinent(+event.target.value)}>
+                        <select className="custom-select custom-select-sm mt-5 ms-5 mb-1 me-1 rounded" required value={continentInput} onChange={(event) => findContinent(+event.target.value)}>
                             <option key="selectContinent" value={0}>Veuillez sélectionner un continent</option>
                             {listContinents}
                             <div className="invalid-feedback">Example invalid custom select feedback</div>
@@ -183,11 +167,8 @@ export default function Write(props: any) {
                     <label className="TopicTitle fs-1 text-center m-3"></label>
                     <input type='text' className="form-control" value={titleInput} placeholder="Titre de votre Topic" onChange={(event) => setTitleInput(event.target.value)} aria-label="Recipient's username" aria-describedby="button-addon2"></input>
 
-
                     <label className="TopicTitle fs-2 text-center m-3"></label>
                     <input type='text' className="form-control" value={destinationsInput} placeholder="Pays visités" onChange={(event) => setDestinationsInput(event.target.value)} aria-label="Recipient's username" aria-describedby="button-addon2"></input>
-
-                    
 
                     <div className="input-group mb-2 mt-5 justify-content-center">
                         <label htmlFor="upload-file" className="upload-file">Téléchargez vos photos (min.4 max. 8) </label>
@@ -200,7 +181,7 @@ export default function Write(props: any) {
                     <textarea className="textarea form-control m-auto" value={contentInput} id="topic" placeholder="Tell us Your Story" onChange={(event) => setContentInput(event.target.value)} aria-label="Recipient's username" aria-describedby="button-addon2" autoFocus></textarea>
 
                     <div className="container-button d-flex flex-column justify-content-center align-items-center mb-3">
-                        <button type="submit" className="writeSubmit mt-4" data-mdb-ripple-color="dark">Publish</button>
+                        <button type="submit" className="writeSubmit mt-4" data-mdb-ripple-color="dark">Publier</button>
                     </div>
                 </form>
             </div >

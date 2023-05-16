@@ -33,8 +33,7 @@ function App() {
         <NavBar />
         <Routes>
         
-
-          <Route path='/' element={<HomePage />} />{/* App sera le parent des routes posts et on trouvera la navbar fixe*/}
+          <Route path="/" element={<HomePage />} />{/* App sera le parent des routes posts et on trouvera la navbar fixe*/}
           <Route path="write" element={<Write />} />
           <Route path="/contact" element={<Contact />} />
 
@@ -51,7 +50,7 @@ function App() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <ToastContainer/>
+        <ToastContainer theme="dark" closeOnClick/>
       </>
     </AuthContext.Provider>
   );

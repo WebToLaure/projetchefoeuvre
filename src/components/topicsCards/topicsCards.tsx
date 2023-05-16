@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './topicsCards.css';
 import TopicCard from '../topicCard/topicCard';
 import { NavLink, useParams } from 'react-router-dom';
+import SideBar from '../sidebar/sidebar';
 
 
 export type TTop = {
@@ -30,9 +31,9 @@ export default function TopicsCards() {
     const [topicsCards, setTopicsCards] = useState<TTop[] | null>(null);
     const [continent, setContinent] = useState("");
 
-    
+
     const [images, setImages] = useState<TImg[]>([]);
-    const [imageInput, setImageInput] = useState(0);
+
 
     let { id } = useParams();
     console.log('continent id:', id);
@@ -64,27 +65,27 @@ export default function TopicsCards() {
         getTopicsCards()
             .catch(console.error);
 
-    }, [id])
+    }, [])//si pb pensez à remettre id dans array
 
-    /* function findImage(item: TImg) {
-        const index =images!.findIndex(elm => elm.id === item.id);
-        images![index] = item;
-        setImageInput({ ...images });
 
-    } */
 
 
     return (
         <>
-            <div className='d-flex flex-row justify-content-end'>
-                <NavLink to="/"><button className="retour mt-4 me-4 p-1 text-light">Back to Home</button></NavLink>
+         <div className="row m-2">
+            <div className="col-md-9 container-card">
+                <div className='d-flex flex-row justify-content-end'>
+                    <NavLink to="/"><button className="retour mt-4 me-4 p-1 text-light">Retour Accueil</button></NavLink>
+                </div>
+                <div className="h1 text-center mt-5 border-bottom border-top mb-5">{continent}</div>
+                <div className="container d-flex align-items-center justify-content-center gap-3 px-0 mt-4">
+                    {topicsCards?.map(item => <TopicCard item={item} key={item.id} />)}
+                </div>
             </div>
-
-            <div className="h1 text-center mt-5 border-bottom border-top">{continent}</div>
-            <div className="container d-flex align-items-center justify-content-center gap-3 px-0 mt-4">
-                {topicsCards?.map(item => <TopicCard item={item} key={item.id} />)}
+            <div className="col-md-3 topicsCards">
+                <SideBar/>
             </div>
-
+            </div>
         </>
     )
 }

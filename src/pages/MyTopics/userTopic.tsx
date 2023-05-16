@@ -55,7 +55,7 @@ export default function UserTopic(props: any) {
         const responseJson = await response.json()
         console.log("Success!", responseJson);
         if (responseJson.statusCode === 200) {
-            toast.success("votre topic a bien étét supprimé", { autoClose: 1500 })
+            toast.success("votre topic a bien été supprimé", { autoClose: 1500 })
             props.del(props.item.id)
         }
     }
@@ -85,7 +85,7 @@ export default function UserTopic(props: any) {
             <NavLink to={`/topic/${props.topic.id}`} className="nav-link">
                 {<div className='d-flex '>
                     <div className="topicUser postion-relative">
-                        <img src={`/photos/${props.topic.id}.jpg`} className="topicUser img-Top" alt="..."></img>
+                        <img src={`http://localhost:8000/images/${props.item?.images[0]?.file}`}className="topicUser img-Top" alt="..."></img>
                         <div className=" d-flex flex-row justify-content-center align-items-center px-1 card-bodyTopic">
                             <span className="card-userTopic fs-4 dark text-center">{props.topic.destinations}</span>
                         </div>

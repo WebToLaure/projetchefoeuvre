@@ -2,7 +2,12 @@
     padding-left: 1rem ! important;
 }
 
+#navbar a.active{
 
+    color:black;
+    font-weight: 500;
+
+}
 
 .navbar{
 font-family: "Lora","Josefin Sans"," sans-serif";

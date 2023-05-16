@@ -1,6 +1,6 @@
 import './PageNotFound.css';
 
-export function PageNotFound(props: any) {
+export function PageNotFound(props: any):JSX.Element {
 
     return (
 

@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/authContext';
 import Commentaries from '../../components/Comments/commentaries';
 import { toast } from 'react-toastify';
 
+
 type TCom = {
     id: number,
     topicId: number,
@@ -73,7 +74,7 @@ export default function Topic(props: any) {
                 content: contentInput,
             })
         };
-        const response = await fetch(`http://localhost:8000/topics/${props.item.id}`, requestOptions)
+        const response = await fetch(`http://localhost:8000/topics/${id}`, requestOptions)
         const responseJson = await response.json();
 
         if (responseJson.statusCode === 200) {
@@ -89,11 +90,11 @@ export default function Topic(props: any) {
                 Authorization: `Bearer ${user?.access_token}`
             }
         };
-        const response = await fetch(`http://localhost:8000/topics/${props.item.id}`, requestOptions)
+        const response = await fetch(`http://localhost:8000/topics/${id}`, requestOptions)
         const responseJson = await response.json()
         console.log("Success!", responseJson);
         if (responseJson.statusCode === 200) {
-            toast.success("votre topic a bien étét supprimé", { autoClose: 1500 })
+            toast.success("votre topic a bien été supprimé", { autoClose: 1500 })
             props.del(props.item.id)
         }
     }
@@ -114,51 +115,6 @@ export default function Topic(props: any) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     function update() {
         setShowInput(true)
     }
@@ -174,7 +130,7 @@ export default function Topic(props: any) {
         <>
             <div className="container-fluid border-radius-5px">
 
-                <NavLink to="/continents"><button className="retour mt-4 me-4 p-1 text-light">Back to</button> {/* non fonctionnel */} </NavLink>
+                <NavLink to="/continents"><button className="retour mt-4 me-4 p-1 text-light">Retour</button> {/* non fonctionnel */} </NavLink>
 
                 <h1 className="TopicTitle fs-1 text-center m-3"> {titleInput}</h1>
                 {showInput && <div>

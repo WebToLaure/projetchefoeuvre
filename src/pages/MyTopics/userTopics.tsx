@@ -1,6 +1,7 @@
 import "./userTopic.css";
 import { AuthContext } from '../../context/authContext';
 import { useState, useContext } from 'react';
+import Topic from "../topic/topic";
 import UserTopic from "./userTopic";
 
 

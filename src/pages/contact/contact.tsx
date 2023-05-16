@@ -1,8 +1,8 @@
 import react, { useContext, useState } from 'react';
 import "././contact.css";
-import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
+import { toast } from 'react-toastify';
 
 type ProfilLog = {
     email: string;
@@ -26,8 +26,8 @@ export default function Contact(props: any) {
     async function submit(event: { preventDefault: () => void; }) {
         event.preventDefault()
         console.log('succès');
-
-        alert("Votre message a bien été envoyé");
+        setTimeout(() => navigate("/"), 2000);
+        toast.success("Votre message a bien été envoyé", { autoClose: 1500 });
         resetInput()
 
 
@@ -38,7 +38,6 @@ export default function Contact(props: any) {
             navigate("/");
         }
     }
-
 
     return (
 
@@ -78,14 +77,13 @@ export default function Contact(props: any) {
                         </div>
 
                         <div className="col-7">
-                            <label htmlFor="inputEmail" className="form-label">Email address</label>
+                            <label htmlFor="inputEmail" className="form-label">Adresse email</label>
                             <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email" value={emailInput} onChange={(event) => setEmailInput(event.target.value)}></input>
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                            <div id="emailHelp" className="form-text">Nous ne partagerons jamais vos informations</div>
                         </div>
                     </div>
                 </div>
-
-                <div className="mb-3 form-check">
+                <div className="row mx-4">
                     <label htmlFor="message" className="form-label">Votre message</label>
                     <textarea className="form-control" id="message" rows={3} value={message} onChange={(event) => setMessage(event.target.value)}></textarea>
                 </div>

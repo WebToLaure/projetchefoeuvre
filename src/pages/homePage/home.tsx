@@ -15,7 +15,7 @@ export default function HomePage(props: any, onClick: react.MouseEventHandler<HT
           <div className="col-md-9 container-card">
             <ContinentsCards/>
           </div>
-          <div className="col-md-3 container-card mt-3">
+          <div className="col-md-3 container-card">
             <SideBar />
           </div>
         </div>

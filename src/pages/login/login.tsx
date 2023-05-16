@@ -37,15 +37,15 @@ export default function Login(props: any) {
 
         if (responseJson.access_token) {
             auth.setUser({ ...responseJson });
-            toast.success(`Bonjour et ravie de vous revoir!!`)
+            toast.success(`Bonjour et heureuse de vous avoir parmi nous!!`, { autoClose: 2000 })
             resetInputLog()
-            setTimeout(() => navigate("/"), 5000);
+            setTimeout(() => navigate("/"), 2000);
         }
 
         else {
             resetInputLog()
             return (
-                toast.warning("Email ou mot de passe incorrect")
+                toast.warning("Email ou mot de passe incorrect",{ autoClose: 2000 })
             )
 
         };
@@ -76,13 +76,13 @@ export default function Login(props: any) {
                             {/* <!-- Email input --> */}
                             <label htmlFor="email" className="text-white">Email</label>
                             <div className="form-outline mb-3 mt-2">
-                                <input type="email" className="form-control" placeholder="Email" value={emailInput} onChange={(event) => setEmailLogInput(event.target.value)}></input>
+                                <input type="email" className="form-control" title="Veuillez renseigner votre adresse email" placeholder="Email" value={emailInput} onChange={(event) => setEmailLogInput(event.target.value)}></input>
                             </div>
 
                             {/* <!-- Password input --> */}
-                            <label htmlFor="password" className="text-white">Password</label>
+                            <label htmlFor="password" className="text-white">Mot de passe</label>
                             <div className="form-outline mb-3 mt-2">
-                                <input type="password" className="form-control" placeholder="Enter your password.." value={passwordInput} onChange={(event) => setPasswordLogInput(event.target.value)}></input>
+                                <input type="password" className="form-control" title="Veuillez saisir votre mot de passe utilisateur" placeholder="Entrer votre mot de passe.." value={passwordInput} onChange={(event) => setPasswordLogInput(event.target.value)}></input>
                             </div>
 
                             {/* <!-- Simple link --> */}
@@ -92,12 +92,12 @@ export default function Login(props: any) {
 
                             {/* <!-- Submit button Login--> */}
                             <div className="col-center text-center align-items-center mt-4">
-                                <button type="button" className="btn-block loginButton rounded col-6" onClick={fetchDataLog}>Se connecter</button>
+                                <button type="button" className="btn-block loginButton rounded col-6" title="Appuyez ici pour valider vos informations" onClick={fetchDataLog}>Se connecter</button>
                             </div>
 
                             {/* <!-- Submit button Register --> */}
                             <div className="col-center text-center align-items-center mt-5">
-                                <NavLink to="/users/register"><button type="button" className="btn btn-dark btn-block col-6">Créez votre compte</button></NavLink>
+                                <NavLink to="/users/register"><button type="button" className="btn btn-dark btn-block col-6" title="Si vous souhaitez créer un compte?..">Créez votre compte</button></NavLink>
                             </div>
                         </div>
                     </form>

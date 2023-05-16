@@ -83,8 +83,8 @@ export default function MonCompte(props: any) {
                 <div className="settings d-flex">
                     <div className="settingsWrapper">
                         <div className="settingsTitle">
-                            <span className="settingsUpdateTitle">Update Your Account</span>
-                            <span className="settingsDeleteTitle" onClick={userDelete}>Delete Your Account</span>
+                            <span className="settingsUpdateTitle">Mise à jour du Compte</span>
+                            <span className="settingsDeleteTitle" onClick={userDelete}>Supprimer votre compte</span>
                         </div>
 
 
@@ -92,13 +92,13 @@ export default function MonCompte(props: any) {
                             <label>Pseudo</label>
                             <input required type="text" defaultValue={user?.user.pseudo} placeholder="pseudo" onChange={(event) => setPseudoInput(event.target.value)} />
 
-                            <label htmlFor="email" className="form-label">Email address</label>
+                            <label htmlFor="email" className="form-label">Adresse Email</label>
                             <input required type="email" name="email" className="form-control" placeholder="name@example.com" defaultValue={user?.user.email} onChange={(event) => setEmailInput(event.target.value)} />
 
-                            <label>Password</label>
+                            <label>Mot De Passe</label>
                             <input type="password" name="password" id="password" readOnly value="password" aria-label="Disabled input example" disabled />
 
-                            <button type="submit" className="settingsSubmit">Update</button>
+                            <button type="submit" className="settingsSubmit">Mettre à jour</button>
                         </form>
                     </div>
                 </div>
